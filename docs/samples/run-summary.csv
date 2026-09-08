@@ -1,0 +1,16 @@
+Metric,Value
+Run ID,bc60f38b-750a-46b2-a227-ba2cf2df67a7
+Started (UTC),2026-09-08 11:23:41.227000
+Ended (UTC),2026-09-08 11:23:57.473000
+Run status,Completed
+TotalClaims,20
+Approved,8
+Rejected,12
+Failed,0
+Skipped,0
+Attempts,20
+Retries,0
+ErrorAttempts,0
+Reconciliation,0
+Counting rule,"Totals use the last outcome per ClaimID. Attempts, errors and retries count every attempt in this run."
+Fatal error,

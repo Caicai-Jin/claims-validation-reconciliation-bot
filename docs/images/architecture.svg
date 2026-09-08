@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1030" viewBox="0 0 1600 1030"><rect width="100%" height="100%" fill="#F7FAFC"/>
+<text x="60" y="76" font-family="Segoe UI,Arial,sans-serif" font-size="40" font-weight="700" fill="#263746">Claims Validation &amp; Reconciliation</text>
+<text x="60" y="121" font-family="Segoe UI,Arial,sans-serif" font-size="25" font-weight="400" fill="#263746">A single-processor UiPath workflow with reusable C# validation and SQL results.</text>
+<rect x="60" y="175" width="440" height="145" rx="14" fill="white" stroke="#279B65" stroke-width="3"/>
+<text x="84" y="220" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" fill="#263746">Excel input</text>
+<text x="84" y="259" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">20 synthetic claims</text>
+<text x="84" y="291" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Claims worksheet</text>
+<rect x="580" y="175" width="440" height="145" rx="14" fill="white" stroke="#279B65" stroke-width="3"/>
+<text x="604" y="220" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" fill="#263746">UploadClaims.xaml</text>
+<text x="604" y="259" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Read Excel; check references</text>
+<text x="604" y="291" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Add one queue item per claim</text>
+<rect x="1100" y="175" width="440" height="145" rx="14" fill="white" stroke="#279B65" stroke-width="3"/>
+<text x="1124" y="220" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" fill="#263746">Orchestrator queue</text>
+<text x="1124" y="259" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Unique claim references</text>
+<text x="1124" y="291" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Application failures: one retry</text>
+<polyline points="500,247 580,247" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="580,247 565.5928463623571,253.95944854577968 565.5928463623571,240.04055145422032" fill="#279B65"/>
+<polyline points="1020,247 1100,247" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="1100,247 1085.5928463623572,253.95944854577968 1085.5928463623572,240.04055145422032" fill="#279B65"/>
+<polyline points="1320,320 1320,370 800,370 800,445" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="800,445 793.0405514542203,430.5928463623572 806.9594485457797,430.5928463623572" fill="#279B65"/>
+<text x="840" y="414" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="400" fill="#263746">Retrieve the next queue item</text>
+<rect x="580" y="445" width="440" height="145" rx="14" fill="white" stroke="#279B65" stroke-width="3"/>
+<text x="604" y="490" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" fill="#263746">Main.xaml / REFramework</text>
+<text x="604" y="529" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Initialize &gt; Get data &gt; Process</text>
+<text x="604" y="561" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Save decision; update queue status</text>
+<rect x="60" y="445" width="440" height="145" rx="14" fill="white" stroke="#279B65" stroke-width="3"/>
+<text x="84" y="490" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" fill="#263746">C# validation library</text>
+<text x="84" y="529" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Normalize IDs; check dates/amounts</text>
+<text x="84" y="561" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Called through ValidateClaim.xaml</text>
+<polyline points="580,493 500,493" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="500,493 514.4071536376429,486.0405514542203 514.4071536376429,499.9594485457797" fill="#279B65"/>
+<polyline points="500,546 580,546" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="580,546 565.5928463623571,552.9594485457797 565.5928463623571,539.0405514542203" fill="#279B65"/>
+<rect x="1100" y="445" width="440" height="145" rx="14" fill="white" stroke="#279B65" stroke-width="3"/>
+<text x="1124" y="490" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" fill="#263746">SQL Server</text>
+<text x="1124" y="529" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Load members, providers and limits</text>
+<text x="1124" y="561" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Store ProcessedClaims + RunHistory</text>
+<polyline points="1020,493 1100,493" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="1100,493 1085.5928463623572,499.9594485457797 1085.5928463623572,486.0405514542203" fill="#279B65"/>
+<polyline points="1100,546 1020,546" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="1020,546 1034.4071536376428,539.0405514542203 1034.4071536376428,552.9594485457797" fill="#279B65"/>
+<polyline points="800,590 800,740" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="800,740 793.0405514542203,725.5928463623571 806.9594485457797,725.5928463623571" fill="#279B65"/>
+<text x="820" y="668" font-family="Segoe UI,Arial,sans-serif" font-size="21" font-weight="400" fill="#263746">At end of run</text>
+<rect x="580" y="740" width="440" height="145" rx="14" fill="white" stroke="#279B65" stroke-width="3"/>
+<text x="604" y="785" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="700" fill="#263746">FinalizeRun.xaml</text>
+<text x="604" y="824" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Excel Summary + Details report</text>
+<text x="604" y="856" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Write run history; close connections</text>
+<polyline points="1020,810 1320,810 1320,590" fill="none" stroke="#279B65" stroke-width="4"/>
+<polygon points="1320,590 1326.9594485457797,604.4071536376429 1313.0405514542203,604.4071536376429" fill="#279B65"/>
+<text x="60" y="965" font-family="Segoe UI,Arial,sans-serif" font-size="25" font-weight="400" fill="#263746">Validation tests: 38 xUnit cases. Unit tests run separately from SQL and Orchestrator.</text>
+<text x="60" y="1003" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#263746">Business rejections are recorded outcomes; queue retries handle application exceptions.</text>
+</svg>

@@ -1,0 +1,53 @@
+# Exclude everything unless explicitly included below.
+*
+!*/
+!.gitignore
+!/README.md
+!/ClaimsAutomation.slnx
+
+# C# source and tests
+!/ClaimsValidation.Core/*.cs
+!/ClaimsValidation.Core/*.csproj
+!/ClaimsValidation.Tests/*.cs
+!/ClaimsValidation.Tests/*.csproj
+
+# Database setup and demo queries
+!/Database/*.sql
+!/Database/Demo/*.sql
+!/Database/Demo/README.md
+
+# Portfolio documentation and verified samples
+!/docs/images/*.png
+!/docs/images/*.jpg
+!/docs/images/*.svg
+!/docs/samples/*.csv
+!/docs/samples/*.xlsx
+
+# Synthetic input workbooks
+!/SampleData/claims.xlsx
+!/SampleData/claims_retry_demo.xlsx
+
+# Main UiPath project
+!/UiPath/ClaimsValidationREFramework/*.xaml
+!/UiPath/ClaimsValidationREFramework/project.json
+!/UiPath/ClaimsValidationREFramework/project.uiproj
+!/UiPath/ClaimsValidationREFramework/entry-points.json
+!/UiPath/ClaimsValidationREFramework/LICENSE
+!/UiPath/ClaimsValidationREFramework/Framework/*.xaml
+!/UiPath/ClaimsValidationREFramework/Data/Config.xlsx
+!/UiPath/ClaimsValidationREFramework/Documentation/Phase*Verification.md
+
+# Always exclude generated and local directories
+**/bin/
+**/obj/
+**/node_modules/
+**/.vs/
+**/.local/
+**/.settings/
+**/.project/
+**/.tmh/
+**/.objects/
+/.work/
+/output/
+/UiPath/ClaimsValidationBot/
+/UiPath/ClaimsValidationBot_Phase5_Backup/

@@ -1,0 +1,6 @@
+{
+  "Name": "ClaimsValidationREFramework",
+  "ProjectType": "Process",
+  "Description": "Process synthetic claims using REFramework, Excel, SQL Server, and C#.",
+  "MainFile": "Main.xaml"
+}

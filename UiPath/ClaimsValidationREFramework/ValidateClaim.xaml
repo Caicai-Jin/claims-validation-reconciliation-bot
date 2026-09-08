@@ -1,0 +1,158 @@
+<Activity xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:cc="clr-namespace:ClaimsValidation.Core;assembly=ClaimsValidation.Core" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="ValidateClaim" mc:Ignorable="sap sap2010" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#">
+  <x:Members>
+    <x:Property Name="inRow" Type="InArgument(sd:DataRow)"/>
+    <x:Property Name="inMembers" Type="InArgument(sd:DataTable)"/>
+    <x:Property Name="inProviders" Type="InArgument(sd:DataTable)"/>
+    <x:Property Name="inLimits" Type="InArgument(sd:DataTable)"/>
+    <x:Property Name="inProcessed" Type="InArgument(sd:DataTable)"/>
+    <x:Property Name="outClaim" Type="OutArgument(cc:Claim)"/>
+    <x:Property Name="outStatus" Type="OutArgument(x:String)"/>
+    <x:Property Name="outReason" Type="OutArgument(x:String)"/>
+    <x:Property Name="outAlreadyProcessed" Type="OutArgument(x:Boolean)"/>
+  </x:Members>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>ClaimsValidation.Core</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>ClaimsValidation.Core</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ValidateClaim">
+    <ui:InvokeCode Code="// Convert the Excel row into our Claim object.&#10;outClaim = new ClaimsValidation.Core.Claim{&#10;    ClaimId = ClaimsValidation.Core.IdNormalizer.Normalize(&#10;        inRow[&quot;ClaimID&quot;].ToString()),&#10;    MemberId = ClaimsValidation.Core.IdNormalizer.Normalize(&#10;        inRow[&quot;MemberID&quot;].ToString()),&#10;    ProviderId = ClaimsValidation.Core.IdNormalizer.Normalize(&#10;        inRow[&quot;ProviderID&quot;].ToString()),&#10;    ServiceType = ClaimsValidation.Core.IdNormalizer.Normalize(&#10;        inRow[&quot;ServiceType&quot;].ToString()),&#10;    Amount = System.Convert.ToDecimal(inRow[&quot;Amount&quot;])&#10;};&#10;&#10;// Excel dates can arrive as a DateTime or an Excel serial number.&#10;object dateValue = inRow[&quot;ServiceDate&quot;];&#10;&#10;if (dateValue is System.DateTime){&#10;    outClaim.ServiceDate = ((System.DateTime)dateValue).Date;&#10;}&#10;else if (dateValue is double){&#10;    outClaim.ServiceDate =&#10;        System.DateTime.FromOADate((double)dateValue).Date;&#10;}&#10;else{&#10;    outClaim.ServiceDate =&#10;        System.Convert.ToDateTime(dateValue).Date;&#10;}&#10;&#10;// Reset outputs for this claim.&#10;outAlreadyProcessed = false;&#10;outStatus = &quot;&quot;;&#10;outReason = &quot;&quot;;&#10;&#10;var reasons = new System.Collections.Generic.List&lt;string&gt;();&#10;&#10;// Check saved ClaimIDs and matching claim details.&#10;foreach (System.Data.DataRow saved in inProcessed.Rows){&#10;    string savedClaimId =&#10;        ClaimsValidation.Core.IdNormalizer.Normalize(&#10;            saved[&quot;ClaimID&quot;].ToString());&#10;&#10;    if (savedClaimId == outClaim.ClaimId){&#10;        outAlreadyProcessed = true;&#10;    }&#10;&#10;    bool sameDetails =&#10;        ClaimsValidation.Core.IdNormalizer.Normalize(&#10;            saved[&quot;MemberID&quot;].ToString()) == outClaim.MemberId&#10;        &amp;&amp; ClaimsValidation.Core.IdNormalizer.Normalize(&#10;            saved[&quot;ProviderID&quot;].ToString()) == outClaim.ProviderId&#10;        &amp;&amp; System.Convert.ToDateTime(saved[&quot;ServiceDate&quot;]).Date&#10;            == outClaim.ServiceDate.Date&#10;        &amp;&amp; System.Convert.ToDecimal(saved[&quot;Amount&quot;])&#10;            == outClaim.Amount;&#10;&#10;    if (sameDetails){&#10;        reasons.Add(&quot;DUPLICATE_CLAIM&quot;);&#10;    }&#10;}&#10;&#10;if (outAlreadyProcessed){&#10;    // Do not insert the same primary key again.&#10;    outStatus = &quot;SKIPPED&quot;;&#10;    outReason = &quot;ALREADY_PROCESSED&quot;;&#10;}&#10;else{&#10;    // Check required text fields.&#10;    if (string.IsNullOrWhiteSpace(outClaim.ClaimId)){&#10;        reasons.Add(&quot;MISSING_CLAIM_ID&quot;);&#10;    }&#10;&#10;    if (string.IsNullOrWhiteSpace(outClaim.MemberId)){&#10;        reasons.Add(&quot;MISSING_MEMBER_ID&quot;);&#10;    }&#10;&#10;    if (string.IsNullOrWhiteSpace(outClaim.ProviderId)){&#10;        reasons.Add(&quot;MISSING_PROVIDER_ID&quot;);&#10;    }&#10;&#10;    if (string.IsNullOrWhiteSpace(outClaim.ServiceType)){&#10;        reasons.Add(&quot;MISSING_SERVICE_TYPE&quot;);&#10;    }&#10;&#10;    if (outClaim.Amount &lt;= 0){&#10;        reasons.Add(&quot;INVALID_AMOUNT&quot;);&#10;    }&#10;&#10;    // Find the member.&#10;    System.Data.DataRow memberRow = null;&#10;&#10;    foreach (System.Data.DataRow candidate in inMembers.Rows){&#10;        string memberId =&#10;            ClaimsValidation.Core.IdNormalizer.Normalize(&#10;                candidate[&quot;MemberID&quot;].ToString());&#10;&#10;        if (memberId == outClaim.MemberId){&#10;            memberRow = candidate;&#10;            break;&#10;        }&#10;    }&#10;&#10;    if (memberRow == null&#10;        &amp;&amp; !string.IsNullOrWhiteSpace(outClaim.MemberId)){&#10;        reasons.Add(&quot;MEMBER_NOT_FOUND&quot;);&#10;    }&#10;&#10;    // Check whether the provider exists.&#10;    bool providerExists = false;&#10;&#10;    foreach (System.Data.DataRow candidate in inProviders.Rows){&#10;        string providerId =&#10;            ClaimsValidation.Core.IdNormalizer.Normalize(&#10;                candidate[&quot;ProviderID&quot;].ToString());&#10;&#10;        if (providerId == outClaim.ProviderId){&#10;            providerExists = true;&#10;            break;&#10;        }&#10;    }&#10;&#10;    if (!providerExists&#10;        &amp;&amp; !string.IsNullOrWhiteSpace(outClaim.ProviderId)){&#10;        reasons.Add(&quot;PROVIDER_NOT_FOUND&quot;);&#10;    }&#10;&#10;    // Find the limit for this member's plan and service.&#10;    if (memberRow != null){&#10;        var member = new ClaimsValidation.Core.Member{&#10;            MemberId = outClaim.MemberId,&#10;            CoverageStart = System.Convert.ToDateTime(&#10;                memberRow[&quot;CoverageStart&quot;]),&#10;            CoverageEnd = System.Convert.ToDateTime(&#10;                memberRow[&quot;CoverageEnd&quot;]),&#10;            PlanType = memberRow[&quot;PlanType&quot;].ToString()&#10;        };&#10;&#10;        System.Data.DataRow limitRow = null;&#10;&#10;        foreach (System.Data.DataRow candidate in inLimits.Rows){&#10;            bool samePlan =&#10;                ClaimsValidation.Core.IdNormalizer.Normalize(&#10;                    candidate[&quot;PlanType&quot;].ToString())&#10;                == ClaimsValidation.Core.IdNormalizer.Normalize(&#10;                    member.PlanType);&#10;&#10;            bool sameService =&#10;                ClaimsValidation.Core.IdNormalizer.Normalize(&#10;                    candidate[&quot;ServiceType&quot;].ToString())&#10;                == outClaim.ServiceType;&#10;&#10;            if (samePlan &amp;&amp; sameService){&#10;                limitRow = candidate;&#10;                break;&#10;            }&#10;        }&#10;&#10;        if (limitRow != null){&#10;            decimal limit = System.Convert.ToDecimal(&#10;                limitRow[&quot;MaxAmount&quot;]);&#10;&#10;            var validator =&#10;                new ClaimsValidation.Core.ClaimValidator();&#10;&#10;            var result = validator.Validate(&#10;                outClaim, member, limit);&#10;&#10;            reasons.AddRange(result.Reasons);&#10;        }&#10;        else{&#10;            if (!string.IsNullOrWhiteSpace(outClaim.ServiceType)){&#10;                reasons.Add(&quot;COVERAGE_LIMIT_NOT_FOUND&quot;);&#10;            }&#10;&#10;            // We can still check coverage dates without a limit.&#10;            if (outClaim.ServiceDate.Date &lt; member.CoverageStart.Date&#10;                || outClaim.ServiceDate.Date &gt; member.CoverageEnd.Date){&#10;                reasons.Add(&quot;COVERAGE_INACTIVE&quot;);&#10;            }&#10;        }&#10;    }&#10;&#10;    // Remove repeated reasons and put them in a consistent order.&#10;    var uniqueReasons =&#10;        new System.Collections.Generic.SortedSet&lt;string&gt;(reasons);&#10;&#10;    outReason = string.Join(&quot;, &quot;, uniqueReasons);&#10;    outStatus = uniqueReasons.Count == 0&#10;        ? &quot;APPROVED&quot;&#10;        : &quot;REJECTED&quot;;&#10;}" ContinueOnError="False" DisplayName="Validate current claim" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="inRow">
+          <CSharpValue x:TypeArguments="sd:DataRow">inRow</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="inMembers">
+          <CSharpValue x:TypeArguments="sd:DataTable">inMembers</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="inProviders">
+          <CSharpValue x:TypeArguments="sd:DataTable">inProviders</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="inLimits">
+          <CSharpValue x:TypeArguments="sd:DataTable">inLimits</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="inProcessed">
+          <CSharpValue x:TypeArguments="sd:DataTable">inProcessed</CSharpValue>
+        </InArgument>
+        <OutArgument x:TypeArguments="cc:Claim" x:Key="outClaim">
+          <CSharpReference x:TypeArguments="cc:Claim">outClaim</CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outStatus">
+          <CSharpReference x:TypeArguments="x:String">outStatus</CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="outReason">
+          <CSharpReference x:TypeArguments="x:String">outReason</CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="outAlreadyProcessed">
+          <CSharpReference x:TypeArguments="x:Boolean">outAlreadyProcessed</CSharpReference>
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+  </Sequence>
+</Activity>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ClaimsValidation.Core/ClaimsValidation.Core.csproj" />
+  <Project Path="ClaimsValidation.Tests/ClaimsValidation.Tests.csproj" />
+</Solution>

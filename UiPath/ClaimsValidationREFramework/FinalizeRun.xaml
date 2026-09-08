@@ -1,0 +1,227 @@
+<Activity xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:cc="clr-namespace:ClaimsValidation.Core;assembly=ClaimsValidation.Core" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Class="FinalizeRun" mc:Ignorable="sap sap2010" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))"/>
+    <x:Property Name="in_Details" Type="InArgument(sd:DataTable)"/>
+    <x:Property Name="in_Start" Type="InArgument(s:DateTime)"/>
+    <x:Property Name="in_RunKey" Type="InArgument(x:String)"/>
+    <x:Property Name="in_FatalError" Type="InArgument(x:String)"/>
+    <x:Property Name="in_Stopped" Type="InArgument(x:Boolean)"/>
+  </x:Members>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>ClaimsValidation.Core</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>ClaimsValidation.Core</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>ClosedXML</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="FinalizeRun">
+    <Sequence.Variables>
+      <Variable Name="metrics" x:TypeArguments="scg:Dictionary(x:String, x:Object)"/>
+      <Variable Name="reportPath" x:TypeArguments="x:String"/>
+      <Variable Name="reportError" x:TypeArguments="x:String"/>
+      <Variable Name="endTime" x:TypeArguments="s:DateTime"/>
+      <Variable Name="runStatus" x:TypeArguments="x:String"/>
+      <Variable Name="reportDb" x:TypeArguments="ui:DatabaseConnection"/>
+      <Variable Name="savedRows" x:TypeArguments="x:Int32"/>
+    <Variable Name="historyException" x:TypeArguments="s:Exception"/></Sequence.Variables>
+    <ui:InvokeCode DisplayName="Build reconciliation workbook" Language="CSharp" Code="end = DateTime.UtcNow;&#10;var rows = details.AsEnumerable().ToList();&#10;var last = rows.GroupBy(r =&gt; r[&quot;ClaimID&quot;].ToString()).Select(g =&gt; g.Last()).ToList();&#10;int Count(string s) { return last.Count(r =&gt; r[&quot;Outcome&quot;].ToString() == s); }&#10;metrics = new Dictionary&lt;string,object&gt; { {&quot;TotalClaims&quot;,last.Count},{&quot;Approved&quot;,Count(&quot;APPROVED&quot;)},{&quot;Rejected&quot;,Count(&quot;REJECTED&quot;)},{&quot;Failed&quot;,Count(&quot;ERROR&quot;)},{&quot;Skipped&quot;,Count(&quot;SKIPPED&quot;)},{&quot;Attempts&quot;,rows.Count},{&quot;Retries&quot;,rows.Count(r =&gt; Convert.ToInt32(r[&quot;RetryNumber&quot;]) &gt; 0)},{&quot;ErrorAttempts&quot;,rows.Count(r =&gt; r[&quot;Outcome&quot;].ToString() == &quot;ERROR&quot;)} };&#10;status = !string.IsNullOrEmpty(fatal) ? &quot;Failed&quot; : stopped ? &quot;Stopped&quot; : Count(&quot;ERROR&quot;) &gt; 0 ? &quot;CompletedWithErrors&quot; : &quot;Completed&quot;;&#10;error = &quot;&quot;; path = &quot;&quot;;&#10;try {&#10; var folder = config != null &amp;&amp; config.ContainsKey(&quot;ReportFolder&quot;) ? config[&quot;ReportFolder&quot;].ToString() : System.IO.Path.Combine(System.IO.Path.GetDirectoryName(config[&quot;ClaimsFilePath&quot;].ToString()),&quot;Reports&quot;);&#10; System.IO.Directory.CreateDirectory(folder);&#10; path = System.IO.Path.Combine(folder,&quot;Claims_&quot;+start.ToString(&quot;yyyyMMdd_HHmmss&quot;)+&quot;_&quot;+key.Substring(0,8)+&quot;.xlsx&quot;);&#10; using (var book = new ClosedXML.Excel.XLWorkbook()) {&#10;  var summary = book.Worksheets.Add(&quot;Summary&quot;);summary.Cell(1,1).Value=&quot;Metric&quot;;summary.Cell(1,2).Value=&quot;Value&quot;;&#10;  summary.Cell(2,1).Value=&quot;Run ID&quot;;summary.Cell(2,2).Value=key;&#10;  summary.Cell(3,1).Value=&quot;Started (UTC)&quot;;summary.Cell(3,2).Value=start;summary.Cell(3,2).Style.DateFormat.Format=&quot;yyyy-mm-dd hh:mm:ss&quot;;&#10;  summary.Cell(4,1).Value=&quot;Ended (UTC)&quot;;summary.Cell(4,2).Value=end;summary.Cell(4,2).Style.DateFormat.Format=&quot;yyyy-mm-dd hh:mm:ss&quot;;&#10;  summary.Cell(5,1).Value=&quot;Run status&quot;;summary.Cell(5,2).Value=status;&#10;  int row=6;foreach(var pair in metrics){summary.Cell(row,1).Value=pair.Key;summary.Cell(row++,2).Value=Convert.ToInt32(pair.Value);}&#10;  summary.Cell(row,1).Value=&quot;Reconciliation&quot;;summary.Cell(row++,2).FormulaA1=&quot;B6-SUM(B7:B10)&quot;;&#10;  summary.Cell(row,1).Value=&quot;Counting rule&quot;;summary.Cell(row++,2).Value=&quot;Totals use the last outcome per ClaimID. Attempts, errors and retries count every attempt in this run.&quot;;&#10;  summary.Cell(row,1).Value=&quot;Fatal error&quot;;summary.Cell(row,2).Value=fatal ?? &quot;&quot;;&#10;  summary.Column(1).Width=25;summary.Column(2).Width=75;summary.Column(2).Style.Alignment.WrapText=true;&#10;  summary.Row(row-1).Height=45;&#10;  var detail=book.Worksheets.Add(&quot;Details&quot;);&#10;  for(int col=0;col&lt;details.Columns.Count;col++)detail.Cell(1,col+1).Value=details.Columns[col].ColumnName;&#10;  if(details.Rows.Count&gt;0)detail.Cell(2,1).InsertData(details.Rows);&#10;  detail.Columns().AdjustToContents();detail.Column(1).Width=23;detail.Column(9).Width=65;detail.Column(9).Style.Alignment.WrapText=true;detail.Column(1).Style.DateFormat.Format=&quot;yyyy-mm-dd hh:mm:ss&quot;;&#10;  detail.SheetView.FreezeRows(1);detail.Range(1,1,Math.Max(1,details.Rows.Count+1),details.Columns.Count).SetAutoFilter();&#10;  foreach(var sheet in book.Worksheets){sheet.Style.Font.FontName=&quot;Calibri&quot;;sheet.Style.Font.FontSize=11;sheet.Row(1).Style.Font.Bold=true;sheet.Row(1).Style.Fill.BackgroundColor=ClosedXML.Excel.XLColor.LightBlue;}&#10;  book.SaveAs(path, false, true);&#10; }&#10;} catch(Exception ex) {error=ex.Message;status=&quot;ReportingFailed&quot;;path=&quot;&quot;;}">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="config">
+          <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)">in_Config</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="details">
+          <CSharpValue x:TypeArguments="sd:DataTable">in_Details</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="start">
+          <CSharpValue x:TypeArguments="s:DateTime">in_Start</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="key">
+          <CSharpValue x:TypeArguments="x:String">in_RunKey</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="fatal">
+          <CSharpValue x:TypeArguments="x:String">in_FatalError</CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="stopped">
+          <CSharpValue x:TypeArguments="x:Boolean">in_Stopped</CSharpValue>
+        </InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="metrics">
+          <CSharpReference x:TypeArguments="scg:Dictionary(x:String, x:Object)">metrics</CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="path">
+          <CSharpReference x:TypeArguments="x:String">reportPath</CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="error">
+          <CSharpReference x:TypeArguments="x:String">reportError</CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime" x:Key="end">
+          <CSharpReference x:TypeArguments="s:DateTime">endTime</CSharpReference>
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="status">
+          <CSharpReference x:TypeArguments="x:String">runStatus</CSharpReference>
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:LogMessage DisplayName="Log claim result" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object">"Run summary | " + in_RunKey + " | " + runStatus + " | Claims: " + metrics["TotalClaims"] + " | Approved: " + metrics["Approved"] + " | Rejected: " + metrics["Rejected"] + " | Failed: " + metrics["Failed"] + " | Skipped: " + metrics["Skipped"] + " | Errors: " + metrics["ErrorAttempts"] + " | Retries: " + metrics["Retries"] + " | Report: " + reportPath</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <TryCatch DisplayName="Save RunHistory and close reporting connection">
+      <TryCatch.Try>
+        <Sequence><ui:DatabaseConnect DisplayName="Connect to Database">
+      <ui:DatabaseConnect.ProviderName>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String">in_Config["DbProviderName"].ToString()</CSharpValue>
+        </InArgument>
+      </ui:DatabaseConnect.ProviderName>
+      <ui:DatabaseConnect.ConnectionString>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String">in_Config["DbConnectionString"].ToString()</CSharpValue>
+        </InArgument>
+      </ui:DatabaseConnect.ConnectionString>
+      <ui:DatabaseConnect.DatabaseConnection>
+        <OutArgument x:TypeArguments="ui:DatabaseConnection">
+          <CSharpReference x:TypeArguments="ui:DatabaseConnection">reportDb</CSharpReference>
+        </OutArgument>
+      </ui:DatabaseConnect.DatabaseConnection>
+    </ui:DatabaseConnect>
+    <ui:ExecuteNonQuery TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Run Command">
+      <ui:ExecuteNonQuery.ExistingDbConnection><InArgument x:TypeArguments="ui:DatabaseConnection"><CSharpValue x:TypeArguments="ui:DatabaseConnection">reportDb</CSharpValue></InArgument></ui:ExecuteNonQuery.ExistingDbConnection><ui:ExecuteNonQuery.AffectedRecords><OutArgument x:TypeArguments="x:Int32"><CSharpReference x:TypeArguments="x:Int32">savedRows</CSharpReference></OutArgument></ui:ExecuteNonQuery.AffectedRecords><ui:ExecuteNonQuery.Parameters><InArgument x:TypeArguments="x:String" x:Key="RunKey"><CSharpValue x:TypeArguments="x:String">in_RunKey</CSharpValue></InArgument><InArgument x:TypeArguments="s:DateTime" x:Key="StartTime"><CSharpValue x:TypeArguments="s:DateTime">in_Start</CSharpValue></InArgument><InArgument x:TypeArguments="s:DateTime" x:Key="EndTime"><CSharpValue x:TypeArguments="s:DateTime">endTime</CSharpValue></InArgument><InArgument x:TypeArguments="x:String" x:Key="RunStatus"><CSharpValue x:TypeArguments="x:String">runStatus</CSharpValue></InArgument><InArgument x:TypeArguments="x:String" x:Key="ReportPath"><CSharpValue x:TypeArguments="x:String">reportPath</CSharpValue></InArgument><InArgument x:TypeArguments="x:String" x:Key="ReportError"><CSharpValue x:TypeArguments="x:String">reportError</CSharpValue></InArgument><InArgument x:TypeArguments="x:Int32" x:Key="TotalClaims"><CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(metrics["TotalClaims"])</CSharpValue></InArgument><InArgument x:TypeArguments="x:Int32" x:Key="Approved"><CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(metrics["Approved"])</CSharpValue></InArgument><InArgument x:TypeArguments="x:Int32" x:Key="Rejected"><CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(metrics["Rejected"])</CSharpValue></InArgument><InArgument x:TypeArguments="x:Int32" x:Key="Failed"><CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(metrics["Failed"])</CSharpValue></InArgument><InArgument x:TypeArguments="x:Int32" x:Key="Skipped"><CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(metrics["Skipped"])</CSharpValue></InArgument><InArgument x:TypeArguments="x:Int32" x:Key="Attempts"><CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(metrics["Attempts"])</CSharpValue></InArgument><InArgument x:TypeArguments="x:Int32" x:Key="Retries"><CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(metrics["Retries"])</CSharpValue></InArgument><InArgument x:TypeArguments="x:Int32" x:Key="ErrorAttempts"><CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(metrics["ErrorAttempts"])</CSharpValue></InArgument></ui:ExecuteNonQuery.Parameters><ui:ExecuteNonQuery.Sql><InArgument x:TypeArguments="x:String"><CSharpValue x:TypeArguments="x:String">@"INSERT INTO dbo.RunHistory (RunKey,StartTime,EndTime,RunStatus,ReportPath,ReportError,TotalClaims,Approved,Rejected,Failed,Skipped,Attempts,Retries,ErrorAttempts) VALUES (@RunKey,@StartTime,@EndTime,@RunStatus,@ReportPath,@ReportError,@TotalClaims,@Approved,@Rejected,@Failed,@Skipped,@Attempts,@Retries,@ErrorAttempts);"</CSharpValue></InArgument></ui:ExecuteNonQuery.Sql></ui:ExecuteNonQuery>
+    <ui:LogMessage DisplayName="Log claim result" Level="Info"><ui:LogMessage.Message><InArgument x:TypeArguments="x:Object"><CSharpValue x:TypeArguments="x:Object">"RunHistory saved | " + in_RunKey</CSharpValue></InArgument></ui:LogMessage.Message></ui:LogMessage></Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches><Catch x:TypeArguments="s:Exception"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument Name="reportingException" x:TypeArguments="s:Exception"/></ActivityAction.Argument><Assign><Assign.To><OutArgument x:TypeArguments="s:Exception"><CSharpReference x:TypeArguments="s:Exception">historyException</CSharpReference></OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="s:Exception"><CSharpValue x:TypeArguments="s:Exception">reportingException</CSharpValue></InArgument></Assign.Value></Assign></ActivityAction></Catch></TryCatch.Catches><TryCatch.Finally>
+        <ui:InvokeWorkflowFile DisplayName="Invoke CloseAllApplications" WorkflowFileName="Framework/CloseAllApplications.xaml" UnSafe="False">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InOutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="io_dbConnection">
+              <CSharpReference x:TypeArguments="ui:DatabaseConnection">reportDb</CSharpReference>
+            </InOutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </TryCatch.Finally>
+    </TryCatch>
+    <If>
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean">!string.IsNullOrEmpty(reportError)</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Throw>
+          <Throw.Exception>
+            <InArgument x:TypeArguments="s:Exception">
+              <CSharpValue x:TypeArguments="s:Exception">new System.Exception("Report generation failed: " + reportError)</CSharpValue>
+            </InArgument>
+          </Throw.Exception>
+        </Throw>
+      </If.Then>
+    </If>
+  <If><If.Condition><InArgument x:TypeArguments="x:Boolean"><CSharpValue x:TypeArguments="x:Boolean">historyException != null</CSharpValue></InArgument></If.Condition><If.Then><Throw><Throw.Exception><InArgument x:TypeArguments="s:Exception"><CSharpValue x:TypeArguments="s:Exception">historyException</CSharpValue></InArgument></Throw.Exception></Throw></If.Then></If></Sequence>
+</Activity>
