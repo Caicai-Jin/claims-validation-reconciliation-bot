@@ -211,7 +211,6 @@ SampleData/                         Synthetic normal and retry inputs
 UiPath/ClaimsValidationREFramework/  Main queue-based UiPath project
 docs/images/                        Architecture diagram and demo screenshots
 docs/samples/                       Recorded report and CSV exports
-output/video/                       Edited demo video
 ```
 
-Earlier Phase 5 UiPath folders are development history; use `ClaimsValidationREFramework`. Local build caches, `.work` evidence, and machine-specific backups are not required to understand the sample outputs linked above.
+The edited demo is hosted on YouTube and linked at the top of this README.
